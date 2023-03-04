@@ -1,4 +1,4 @@
-@border-radius: 0.5em;
+$border-radius: 0.5em;
 
 * {
     box-sizing: border-box;
@@ -36,6 +36,12 @@ header {
     }
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+}
+
 @keyframes spawn {
     from {
         opacity: 0;
@@ -61,11 +67,11 @@ header {
 
     img {
         pointer-events: none;
-        border-radius: @border-radius;
+        border-radius: $border-radius;
     }
 
     .item {
-        border-radius: @border-radius;
+        border-radius: $border-radius;
         position: relative;
         transform-origin: center top;
         overflow: hidden;
@@ -84,10 +90,13 @@ header {
             border-radius: 50%;
             filter: blur(24em);
             z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.1);
+            opacity: 0;
         }
 
         &:hover::before {
-            background-color: rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.2s forwards;
+            opacity: 1;
         }
 
     }
@@ -100,7 +109,7 @@ header {
         background-size: 70%;
         background-position: 50%;
         background-repeat: no-repeat;
-        filter: invert();
+        filter: invert(1);
         background-image: url("https://cdn.onlinewebfonts.com/svg/download_315092.png");
     }
 
@@ -115,11 +124,12 @@ header {
 
         img {
             width: 100%;
+            margin-bottom: -5px;
         }
 
         .info {
-            border-bottom-left-radius: @border-radius;
-            border-bottom-right-radius: @border-radius;
+            border-bottom-left-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
             background-color: aliceblue;
             opacity: inherit;
             width: 100%;
